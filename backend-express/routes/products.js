@@ -57,7 +57,14 @@ router.get("/", validateSchema(getProductsSchema), async (req, res, next) => {
       .skip(skip)
       .limit(limit);
     // .limit(10);
-    res.json(results);
+
+    const totalResults = await Product.countDocuments(conditionFind);
+
+    res.json({
+      payload: results,
+      total: totalResults,
+    });
+    res.json(totalResults);
   } catch (error) {
     res.status(500).json({ ok: false, error });
   }
