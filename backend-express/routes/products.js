@@ -38,15 +38,15 @@ router.get("/", validateSchema(getProductsSchema), async (req, res, next) => {
         $and: [
           categoryId && { $eq: ["$categoryId", categoryId] },
           supplierId && { $eq: ["$supplierId", supplierId] },
-          fromPrice && { $gte: ["$price", parseInt(fromPrice)] },
-          toPrice && { $lte: ["$price", parseInt(toPrice)] },
+          fromPrice && { $gte: ["$price", Number(fromPrice)] },
+          toPrice && { $lte: ["$price", Number(toPrice)] },
           productName && {
             $regexMatch: { input: "$name", regex: productName, options: "i" },
           },
-          fromStock && { $gte: ["$stock", parseInt(fromStock)] },
-          toStock && { $lte: ["$stock", parseInt(toStock)] },
-          fromDiscount && { $gte: ["$discount", parseInt(fromDiscount)] },
-          toDiscount && { $lte: ["$discount", parseInt(toDiscount)] },
+          fromStock && { $gte: ["$stock", Number(fromStock)] },
+          toStock && { $lte: ["$stock", Number(toStock)] },
+          fromDiscount && { $gte: ["$discount", Number(fromDiscount)] },
+          toDiscount && { $lte: ["$discount", Number(toDiscount)] },
         ].filter(Boolean),
       },
     };
