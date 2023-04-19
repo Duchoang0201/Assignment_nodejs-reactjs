@@ -4,6 +4,7 @@ const yup = require("yup");
 const { Product } = require("../models");
 const mongooseLeanVirtuals = require("mongoose-lean-virtuals");
 const ObjectId = require("mongodb").ObjectId;
+const { validateSchema, getProductsSchema } = require("../validation/product");
 // let data = [
 //     {id: 1, name: 'iphone 14 ProMax', price: 1500},
 //     {id: 2, name: 'iphone 13 ProMax', price: 1200},
@@ -16,7 +17,7 @@ const ObjectId = require("mongodb").ObjectId;
 /* GET home page. */
 
 // Get all on nultiple conditions
-router.get("/", async (req, res, next) => {
+router.get("/", validateSchema(getProductsSchema), async (req, res, next) => {
   try {
     const {
       categoryId,

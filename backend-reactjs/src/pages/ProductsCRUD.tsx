@@ -611,29 +611,40 @@ const ProductsCRUD = () => {
       ),
       filterDropdown: () => {
         return (
-          <div className="d-flex flex-row justify-content-between">
-            <span style={{ paddingTop: "5px" }}>Clear All </span>
-            <Button
-              onClick={() => {
-                setSupplierId("");
-                setProductName("");
-                setCategoryId("");
-                //Price
-                setFromPrice("");
-                setToPrice("");
-                inforPrice.resetFields();
-                //Discount
-                setFromDiscount("");
-                setToDiscount("");
-                inforDiscount.resetFields();
-                //Stock
-                setFromStock("");
-                setToStock("");
-                inforStock.resetFields();
-              }}
-              icon={<ClearOutlined />}
-            />
-          </div>
+          <>
+            <div className="d-flex flex-row justify-content-between">
+              <span style={{ paddingTop: "5px" }}>Clear All </span>
+              <Button
+                onClick={() => {
+                  setSupplierId("");
+                  setProductName("");
+                  setCategoryId("");
+                  //Price
+                  setFromPrice("");
+                  setToPrice("");
+                  inforPrice.resetFields();
+                  //Discount
+                  setFromDiscount("");
+                  setToDiscount("");
+                  inforDiscount.resetFields();
+                  //Stock
+                  setFromStock("");
+                  setToStock("");
+                  inforStock.resetFields();
+                }}
+                icon={<ClearOutlined />}
+              />
+            </div>
+            {/* <div>
+              <InputNumber
+                min={1}
+                max={10}
+                defaultValue={3}
+                onChange={(e: any) => setLimit(e)}
+              />
+              <Button style={{ paddingTop: "3px" }} icon={<SearchOutlined />} />
+            </div> */}
+          </>
         );
       },
     },
